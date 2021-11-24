@@ -17,7 +17,7 @@ int sum = my.hap();
 
 <table border="1">
   <tr>
-    <th>1-10 합</th>
+    <th>1-100 합</th>
     <td width="100px"><%=sum %></td>
   </tr>
   
