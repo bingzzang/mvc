@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;		//web용 api
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.util.MyUtil;
 
+@WebServlet("/hs.do")
 public class HelloServlet extends HttpServlet {
 
 	@Override
