@@ -17,7 +17,6 @@ public class MemberVO {
 	}
 
 	public MemberVO(int num, String id, String pass, String name, int age, String email, String phone) {
-		super();
 		this.num = num;
 		this.id = id;
 		this.pass = pass;

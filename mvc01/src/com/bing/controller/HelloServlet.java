@@ -25,7 +25,6 @@ public class HelloServlet extends HttpServlet {
 		for (int i = 1; i <= 100; i++) {
 			sum += i;
 		}
-
 		// 3. 요청한 클라이언트에게 응답하는 작업(프리젠테이션 로직) -> view(jsp)
 		PrintWriter out = resp.getWriter(); // 요청한 클라이언트와 연결된 빨대, out을 통해 http를 내려보냄
 		out.println("<html>");

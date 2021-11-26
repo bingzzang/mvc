@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bing.model.MyCalc;
+
 /**
  * Servlet implementation class CalcController
  */
@@ -18,10 +20,6 @@ public class CalcController extends HttpServlet {
 
 	// controller 역할
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -30,14 +28,31 @@ public class CalcController extends HttpServlet {
 		int su2 = Integer.parseInt(request.getParameter("su2"));
 
 		// su1~su2
-		int sum = 0;
-		for (int i = su1; i <= su2; i++) {
-			sum += i;
-		}
+		//비지니스 로직 -> 모델 분리
+//		int sum = 0;
+//		for (int i = su1; i <= su2; i++) {
+//			sum += i;
+//		}
+		
+		MyCalc my = new MyCalc();
+		int sum = my.hap(su1, su2);
 
-		// 응답
+		// 응답(프리젠테이션로직) -> jsp
 		PrintWriter out = response.getWriter();
-		out.println("total : " + sum);
+		out.println("<html>");
+		out.println("<body>");
+		out.println("<table border=\"1\">");
+		out.println("<tr>");
+		out.println("<td>");
+		out.println("TOTAL");
+		out.println("</td>");
+		out.println("<td>");
+		out.println(sum);
+		out.println("</td>");
+		out.println("</tr>");
+		out.println("</table>");
+		out.println("</body>");
+		out.println("</html>");
 	}
 
 }
