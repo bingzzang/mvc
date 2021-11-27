@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>mvc01 - member register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -14,7 +19,7 @@
 </style>
 <body>
 	회원가입화면
-  <form action="memberInsert.do" method="post">
+  <form action="/mvc01/memberInsert.do" method="post">
 		<table class="tg">
 			<thead>
 			  <tr>
@@ -25,7 +30,7 @@
 			<tbody>
 			  <tr>
 			    <td class="tg-0pky">비밀번호</td>
-			    <td class="tg-0pky"><input type="text" name="pass"></td>
+			    <td class="tg-0pky"><input type="password" name="pass"></td>
 			  </tr>
 			  <tr>
 			    <td class="tg-0pky">이름</td>
@@ -45,8 +50,8 @@
 			  </tr>
 			  <tr>
 			    <td colspan="2" align="center">
-			      <input type="submit" value="전송"/>
-	          <input type="reset" value="취소"/>
+			      <input type="submit" value="전송" class="btn btn-primary"/>
+				  <input type="reset" value="취소" class="btn btn-danger"/>
 			    </td>
 			  </tr>
 			</tbody>
