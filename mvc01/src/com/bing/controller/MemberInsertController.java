@@ -28,7 +28,7 @@ public class MemberInsertController extends HttpServlet {
 		String id = req.getParameter("id");
 		String pass = req.getParameter("pass");
 		String name = req.getParameter("name");
-		int age = Integer.parseInt(req.getParameter("pass"));
+		int age = Integer.parseInt(req.getParameter("age"));
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
 
@@ -50,7 +50,10 @@ public class MemberInsertController extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 
 		if (cnt > 0) {
-			out.println("insert success");
+			// 회원 리스트 보기로 가야함(/mvc01/memberList.do)
+//			out.println("insert success");
+			resp.sendRedirect("/mvc01/memberList.do"); // 응답을 다른페이지로 : redirect
+
 		} else {
 			// 가입실패 -> 예외객체를 만들어서 was에 던지기
 			throw new ServletException("can't insert");
