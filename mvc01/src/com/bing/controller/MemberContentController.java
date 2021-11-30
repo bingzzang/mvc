@@ -37,6 +37,8 @@ public class MemberContentController extends HttpServlet {
 		out.println("<head>");
 		out.println("</head>");
 		out.println("<body>");
+		out.println("<form action='/mvc01/memberUpdate.do' method='post'>");
+		out.println("<input type='hidden' name='num' value='" + vo.getNum() + "' />");
 		out.println("<table border='1'>");
 		out.println("<tbody>");
 		if (vo != null) {
@@ -76,12 +78,13 @@ public class MemberContentController extends HttpServlet {
 		}
 		out.println("<tr>");
 		out.println("<td colspan='2' align='center'>");
-		out.println("수정하기");
-		out.println("삭제");
-		out.println("리스트");
+		out.println("<input type='submit' value='수정하기'/>");
+		out.println("<input type='reset' value='취소'/>");
+		out.println("<a href='/mvc01/memberList.do'>리스트</a>");
 		out.println("</td>");
 		out.println("</tr>");
 		out.println("</table>");
+		out.println("</form>");
 		out.println("</body>");
 		out.println("</html>");
 	}

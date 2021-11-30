@@ -147,6 +147,29 @@ public class MemberDAO {
 		return vo;
 	}
 
+	public int updateMember(MemberVO vo) {
+
+		String sql = "update tbl_member set age=?, email=?, phone=? where num=?";
+		getConnect();
+
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vo.getAge());
+			ps.setString(2, vo.getEmail());
+			ps.setString(3, vo.getPhone());
+			ps.setInt(4, vo.getNum());
+
+			cnt = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbclose();
+		}
+
+		return cnt;
+	}
+
 	// 데이터베이스 연결 끊기
 	public void dbclose() {
 		try {
