@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="com.bing.model.*" %>
-<%
-//파라미터 수집(VO)
+<%	
+		request.setCharacterEncoding("utf-8");
+		//파라미터 수집(VO)
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		String name = request.getParameter("name");
@@ -24,7 +25,7 @@
 		int cnt = dao.memberInsert(vo);
 
 		if (cnt > 0) {
-			response.sendRedirect("memberList.do"); // 응답을 다른페이지로 : redirect
+			response.sendRedirect("memberList.jsp"); // 응답을 다른페이지로 : redirect
 
 		} else {
 			// 가입실패 -> 예외객체를 만들어서 was에 던지기
