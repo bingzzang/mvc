@@ -40,7 +40,7 @@ public class MemberUpdateController extends HttpServlet {
 		int cnt = dao.updateMember(vo);
 
 		if (cnt > 0) {
-			resp.sendRedirect("/mvc01/memberList.do");
+			resp.sendRedirect("/mvc03/memberList.do");
 		} else {
 			throw new ServletException("fail to update");
 		}
