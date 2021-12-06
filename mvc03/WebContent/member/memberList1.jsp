@@ -3,9 +3,9 @@
 <%@ page import="com.bing.model.*" %>    
 <%@ page import="java.util.*" %>
 <%
-     // ArrayList<MemberVO> list=(ArrayList<MemberVO>)request.getAttribute("list");
+     ArrayList<MemberVO> list=(ArrayList<MemberVO>)request.getAttribute("list");
 %>    
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
   function deleteFn(num){
-	  location.href="/mvc03/memberDelete.do?num="+num; // ?num=12
+	  location.href="/MVC03/memberDelete.do?num="+num; // ?num=12
   }
 </script>
 </head>
@@ -34,18 +34,18 @@
     <td>전화번호</td>
     <td>삭제</td>
   </tr>
-  <c:forEach var="vo" items="${list}">
+  <% for(MemberVO vo : list) { %>
     	  <tr>
-    	    <td>${vo.num}</td>
-    	    <td><a href="/mvc03/memberContent.do?num=${vo.num}">${vo.id}</a></td>
-    	    <td>${vo.pass}</td>
-    	    <td>${vo.name}</td>
-    	    <td>${vo.age}</td>
-    	    <td>${vo.email}</td>
-    	    <td>${vo.phone}</td>
-    	    <td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${vo.num})"></td>
+    	    <td><%=vo.getNum()%></td>
+    	    <td><a href="/mvc03/memberContent.do?num=<%=vo.getNum()%>"><%=vo.getId()%></a></td>
+    	    <td><%=vo.getPass()%></td>
+    	    <td><%=vo.getName()%></td>
+    	    <td><%=vo.getAge()%></td>
+    	    <td><%=vo.getEmail()%></td>
+    	    <td><%=vo.getPhone()%></td>
+    	    <td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(<%=vo.getNum()%>)"></td>
     	  </tr>    	 
-  </c:forEach>
+ <% } %>
   <tr>
   <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='member/memberRegister.html'"/></td>
   </tr>
