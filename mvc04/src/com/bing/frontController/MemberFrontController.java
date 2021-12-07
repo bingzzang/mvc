@@ -1,7 +1,6 @@
 package com.bing.frontController;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bing.model.MemberDAO;
-import com.bing.model.MemberVO;
+import com.bing.controller.BasicController;
+import com.bing.controller.MemberContentController;
+import com.bing.controller.MemberDeleteController;
+import com.bing.controller.MemberInsertController;
+import com.bing.controller.MemberListController;
+import com.bing.controller.MemberRegisterController;
+import com.bing.controller.MemberUpdateController;
 
 /**
  * Servlet implementation class MemberFrontController
@@ -27,9 +31,11 @@ public class MemberFrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+
 		// client가 어떤 요청을 했는지 파악하기
 		String url = request.getRequestURI(); // request에서 클라이언트가 요청 uri 얻어오기
-//		System.out.println(url);
+		System.out.println(url);
 		String ctx = request.getContextPath();
 //		System.out.println(ctx);
 
@@ -38,22 +44,41 @@ public class MemberFrontController extends HttpServlet {
 //		System.out.println(command);
 
 		// 요청에 따른 분기 작업
+		BasicController ctr = null;
+
+		String nextPage = null;
+
+		// 핸들러 매핑 -> HandlerMapping
 		if (command.equals("/memberList.do")) { // 회원리스트 보기
-			MemberDAO dao = new MemberDAO();
-			List<MemberVO> list = dao.getMemberList();
-			request.setAttribute("list", list);
-			RequestDispatcher rd = request.getRequestDispatcher("member/memberList.jsp");
-			rd.forward(request, response);
+			ctr = new MemberListController();
+			nextPage = ctr.requestHandler(request, response);
 		} else if (command.equals("/memberInsert.do")) { // 회원가입
-
+			ctr = new MemberInsertController();
+			nextPage = ctr.requestHandler(request, response);
 		} else if (command.equals("/memberRegister.do")) { // 회원가입화면
-
+			ctr = new MemberRegisterController();
+			nextPage = ctr.requestHandler(request, response);
 		} else if (command.equals("/memberContent.do")) {
+			ctr = new MemberContentController();
+			nextPage = ctr.requestHandler(request, response);
 
 		} else if (command.equals("/memberUpdate.do")) {
-
+			ctr = new MemberUpdateController();
+			nextPage = ctr.requestHandler(request, response);
 		} else if (command.equals("/memberDelete.do")) {
+			ctr = new MemberDeleteController();
+			nextPage = ctr.requestHandler(request, response);
+		}
 
+		// forward, redirect
+		if (nextPage != null) {
+			if (nextPage.indexOf("redirect:") != -1) {
+				// redirect:/MVC04/memberList.do
+				response.sendRedirect(nextPage.split(":")[1]); // redirect
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher(ViewResolver.makeView(nextPage)); // forward
+				rd.forward(request, response);
+			}
 		}
 
 	}
