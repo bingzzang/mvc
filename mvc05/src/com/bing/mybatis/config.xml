@@ -6,6 +6,9 @@
 
 	<properties resource="com/bing/mybatis/db.properties"/>
 
+	<typeAliases>
+		<typeAlias type="com.bing.model.MemberVO" alias="memberVO" />
+	</typeAliases>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
