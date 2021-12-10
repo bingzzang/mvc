@@ -43,7 +43,7 @@
 	  }
   }
   function logout(){
-	  location.href="<c:url value='/memberlogout.do'/>"
+	  location.href="<c:url value='/memberLogout.do'/>"
   }
 </script>
 </head>

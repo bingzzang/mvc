@@ -20,6 +20,7 @@ public class MemberLogoutController implements BasicController {
 		request.getSession().invalidate();
 		// 2. 브랑우저 종료(JSESSIONID 브라우저쿠키에 저장)
 		// 3. 세션이 종료될때까지 기다리는것
+
 		return "redirect:" + ctx + "/memberList.do";
 	}
 
