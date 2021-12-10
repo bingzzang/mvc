@@ -24,6 +24,7 @@ public class MemberDeleteController implements BasicController {
 		String nextPage = null;
 
 		if (cnt > 0) {
+			request.getSession().invalidate();
 			nextPage = "redirect:" + ctx + "/memberList.do";
 		} else {
 			throw new ServletException("not delete");

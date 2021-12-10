@@ -42,6 +42,9 @@
 		  return false;
 	  }
   }
+  function logout(){
+	  location.href="<c:url value='/memberlogout.do'/>"
+  }
 </script>
 </head>
 <body>
@@ -64,7 +67,7 @@
 				</c:if>
 				<c:if test="${sessionScope.userId!=null && sessionScope.userId!=''}">
 					<h5>${sessionScope.userName}님 환영합니다.</h5>
-					<button type="submit" class="btn btn-warning">로그아웃</button>
+					<button type="submit" class="btn btn-warning" onclick="logout()">로그아웃</button>
 				</c:if>
 			</div>
 		</div>

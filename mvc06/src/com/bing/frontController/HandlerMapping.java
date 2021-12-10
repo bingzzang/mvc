@@ -8,6 +8,7 @@ import com.bing.controller.MemberDeleteController;
 import com.bing.controller.MemberInsertController;
 import com.bing.controller.MemberListController;
 import com.bing.controller.MemberLoginController;
+import com.bing.controller.MemberLogoutController;
 import com.bing.controller.MemberRegisterController;
 import com.bing.controller.MemberUpdateController;
 
@@ -25,6 +26,7 @@ public class HandlerMapping {
 		mappings.put("/memberUpdate.do", new MemberUpdateController());
 		mappings.put("/memberDelete.do", new MemberDeleteController());
 		mappings.put("/memberLogin.do", new MemberLoginController());
+		mappings.put("/memberLogout.do", new MemberLogoutController());
 	}
 
 	public BasicController getController(String key) { // key -> /memberList.do

@@ -15,6 +15,7 @@ import com.bing.controller.MemberDeleteController;
 import com.bing.controller.MemberInsertController;
 import com.bing.controller.MemberListController;
 import com.bing.controller.MemberLoginController;
+import com.bing.controller.MemberLogoutController;
 import com.bing.controller.MemberRegisterController;
 import com.bing.controller.MemberUpdateController;
 
@@ -71,6 +72,9 @@ public class MemberFrontController extends HttpServlet {
 			nextPage = ctr.requestHandler(request, response);
 		} else if (command.equals("/memberLogin.do")) {
 			ctr = new MemberLoginController();
+			nextPage = ctr.requestHandler(request, response);
+		} else if (command.equals("/memberLogout.do")) {
+			ctr = new MemberLogoutController();
 			nextPage = ctr.requestHandler(request, response);
 		}
 
