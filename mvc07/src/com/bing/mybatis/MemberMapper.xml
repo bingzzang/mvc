@@ -26,13 +26,13 @@
 	<delete id="memberDelete" parameterType="Integer">
 		DELETE 
 			FROM TBL_MEMBER 
-		 WHERE NUM=#{num}
+		 WHERE NUM = #{num}
 	</delete>
 	
 	<select id="memberContent" parameterType="Integer" resultType="memberVO">
 		SELECT * 
 			FROM TBL_MEMBER 
-		 WHERE NUM=#{num}
+		 WHERE NUM = #{num}
 	</select>
 	
 	<update id="memberUpdate" parameterType="memberVO">
@@ -40,13 +40,19 @@
 			 SET AGE=#{age}
 			 	 , EMAIL=#{email}
 			 	 , PHONE=#{phone} 
-		 WHERE NUM=#{num}
+		 WHERE NUM = #{num}
 	</update>
 	
 	<select id="memberLogin" parameterType="memberVO" resultType="String">
 		SELECT NAME
 		  FROM TBL_MEMBER
-		 WHERE ID=#{id}
-		   AND PASS=#{pass}
+		 WHERE ID = #{id}
+		   AND PASS = #{pass}
+	</select>
+	
+	<select id="memberDbcheck" parameterType="String" resultType="String">
+		SELECT ID
+			FROM TBL_MEMBER
+		 WHERE ID = #{id}
 	</select>
 </mapper>

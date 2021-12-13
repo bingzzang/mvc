@@ -82,4 +82,17 @@ public class MemberDAO {
 		session.close();
 		return user_name;
 	}
+
+	// 중복 확인
+	public String memberDbcheck(String id) {
+		SqlSession session = sqlSessionFactory.openSession();
+		String dbId = session.selectOne("memberDbcheck", id);// id or null
+		String idDouble = "NO";
+
+		if (dbId != null) {
+			idDouble = "YES";
+		}
+
+		return idDouble; // YSE(중복), ON(중복아님)
+	}
 }

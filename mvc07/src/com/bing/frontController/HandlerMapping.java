@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.bing.controller.BasicController;
 import com.bing.controller.MemberContentController;
+import com.bing.controller.MemberDbcheckController;
 import com.bing.controller.MemberDeleteController;
 import com.bing.controller.MemberInsertController;
 import com.bing.controller.MemberListController;
@@ -27,6 +28,7 @@ public class HandlerMapping {
 		mappings.put("/memberDelete.do", new MemberDeleteController());
 		mappings.put("/memberLogin.do", new MemberLoginController());
 		mappings.put("/memberLogout.do", new MemberLogoutController());
+		mappings.put("/memberDbcheck.do", new MemberDbcheckController());
 	}
 
 	public BasicController getController(String key) { // key -> /memberList.do

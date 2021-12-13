@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bing.controller.BasicController;
 import com.bing.controller.MemberContentController;
+import com.bing.controller.MemberDbcheckController;
 import com.bing.controller.MemberDeleteController;
 import com.bing.controller.MemberInsertController;
 import com.bing.controller.MemberListController;
@@ -75,6 +76,9 @@ public class MemberFrontController extends HttpServlet {
 			nextPage = ctr.requestHandler(request, response);
 		} else if (command.equals("/memberLogout.do")) {
 			ctr = new MemberLogoutController();
+			nextPage = ctr.requestHandler(request, response);
+		} else if (command.equals("/memberDbcheck.do")) {
+			ctr = new MemberDbcheckController();
 			nextPage = ctr.requestHandler(request, response);
 		}
 
