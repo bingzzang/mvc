@@ -3,6 +3,9 @@ package com.bing.frontController;
 import java.util.HashMap;
 
 import com.bing.controller.BasicController;
+import com.bing.controller.FileAddController;
+import com.bing.controller.MemberAjaxDeleteController;
+import com.bing.controller.MemberAjaxListController;
 import com.bing.controller.MemberContentController;
 import com.bing.controller.MemberDbcheckController;
 import com.bing.controller.MemberDeleteController;
@@ -29,6 +32,10 @@ public class HandlerMapping {
 		mappings.put("/memberLogin.do", new MemberLoginController());
 		mappings.put("/memberLogout.do", new MemberLogoutController());
 		mappings.put("/memberDbcheck.do", new MemberDbcheckController());
+		// memberAjaxList
+		mappings.put("/memberAjaxList.do", new MemberAjaxListController());
+		mappings.put("/memberAjaxDelete.do", new MemberAjaxDeleteController());
+		mappings.put("/fileAdd.do", new FileAddController());
 	}
 
 	public BasicController getController(String key) { // key -> /memberList.do
