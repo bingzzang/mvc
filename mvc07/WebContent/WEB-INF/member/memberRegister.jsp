@@ -21,29 +21,30 @@
 		document.form1.submit();
 	}
 	function add2() {
-		if($("#file").val() != ''){
+		if ($("#file").val() != '') {
 			//첨부가 된 경우
-			var formData = new FormData(); 
-			formData.append("file", $("input[name=file]")[0].files[0]);	//첫번째 파일객체의 첫번째 파일을 가져오기
-			$.ajax({
-				url : "<c:url value='/fileAdd.do'/>",
-				type : "post",
-				data : formData,
-				processData : false,	//파일을 업로드할 때는 이 두개를 false로 줘야함
-				contentType : false,
-				success : function(data){
-					//업로드된 실제파일 이름
-					$('#filename').val(data);
-					document.form1.action = "<c:url value='/memberInsert.do'/>";
-					document.form1.submit();
-				},
-				error : function(){
-					alert("error");
-				}
-			});
-		}else{
+			var formData = new FormData();
+			formData.append("file", $("input[name=file]")[0].files[0]); //첫번째 파일객체의 첫번째 파일을 가져오기
+			$
+					.ajax({
+						url : "<c:url value='/fileAdd.do'/>",
+						type : "post",
+						data : formData,
+						processData : false, //파일을 업로드할 때는 이 두개를 false로 줘야함
+						contentType : false,
+						success : function(data) {
+							//업로드된 실제파일 이름
+							$('#filename').val(data);
+							document.form1.action = "<c:url value='/memberInsert.do'/>?mode=fadd";
+							document.form1.submit();
+						},
+						error : function() {
+							alert("error");
+						}
+					});
+		} else {
 			//첨부가 되지 않은 경우
-			document.form1.action = "<c:url value='/memberInsert.do'/>";
+			document.form1.action = "<c:url value='/memberInsert.do'/>?mode=add";
 			document.form1.submit();
 		}
 	}
@@ -71,15 +72,14 @@
 				alert("error");
 			}
 		});
-
-		function dbCheck(data) {
-			if (data != "NO") {
-				alert("중복된 아이디 입니다.");
-				$("#id").focus();
-			} else {
-				alert("사용가능한 아이디 입니다.");
-				$("#id").focus();
-			}
+	}
+	function dbCheck(data) {
+		if (data != "NO") {
+			alert("중복된 아이디 입니다.");
+			$("#id").focus();
+		} else {
+			alert("사용가능한 아이디 입니다.");
+			$("#id").focus();
 		}
 	}
 </script>
@@ -103,7 +103,8 @@
 						<div class="col-sm-10">
 							<table>
 								<tr>
-									<td><input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요"></td>
+									<td><input type="text" class="form-control" id="id"
+										name="id" placeholder="아이디를 입력하세요"></td>
 									<td><input type="button" value="중복체크"
 										onclick="doublecheck()" class="btn btn-warning"></td>
 								</tr>
@@ -113,40 +114,46 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pass">비밀번호:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호를 입력하세요" style="width: 30%">
+							<input type="password" class="form-control" id="pass" name="pass"
+								placeholder="비밀번호를 입력하세요" style="width: 30%">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="name">이름:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" style="width: 30%">
+							<input type="text" class="form-control" id="name" name="name"
+								placeholder="이름을 입력하세요" style="width: 30%">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="age">나이:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="age" name="age" placeholder="나이입력" style="width: 10%">
+							<input type="text" class="form-control" id="age" name="age"
+								placeholder="나이입력" style="width: 10%">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요" style="width: 30%">
+							<input type="text" class="form-control" id="email" name="email"
+								placeholder="이메일을 입력하세요" style="width: 30%">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pass">전화번호:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="phone" name="phone" placeholder="전화번호를 입력하세요" style="width: 30%">
+							<input type="text" class="form-control" id="phone" name="phone"
+								placeholder="전화번호를 입력하세요" style="width: 30%">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="">첨부파일:</label>
 						<div class="col-sm-10">
-							<input type="file" class="control-label" id="file" name="file" style="width: 30%">
+							<input type="file" class="control-label" id="file" name="file"
+								style="width: 30%">
 						</div>
 					</div>
-					<input type="hidden" name="filename" id="filename" value=""/>
+					<input type="hidden" name="filename" id="filename" value="" />
 				</form>
 			</div>
 			<div class="panel-footer" style="text-align: center;">
@@ -160,8 +167,10 @@
 						onclick="add()" disabled="disabled" />
 				</c:if>
 
-				<input type="button" value="취소" class='btn btn-warning' onclick="frmreset()" /> 
-				<input type="button" value="리스트" onclick="location.href='${ctx}/memberList.do'" class='btn btn-success' />
+				<input type="button" value="취소" class='btn btn-warning'
+					onclick="frmreset()" /> <input type="button" value="리스트"
+					onclick="location.href='${ctx}/memberList.do'"
+					class='btn btn-success' />
 			</div>
 		</div>
 	</div>

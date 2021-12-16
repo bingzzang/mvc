@@ -7,14 +7,14 @@
 
 	<select id="memberList" resultType="memberVO">
 		SELECT *
-		  FROM TBL_MEMBER
+		  FROM TBL_MEMBER2
 		 ORDER BY NUM
 	</select>
 	
 	<insert id="memberInsert" parameterType="memberVO">
-		INSERT INTO TBL_MEMBER
+		INSERT INTO TBL_MEMBER2
 					 (NUM, ID, PASS, NAME, AGE, EMAIL, PHONE)
-		VALUES (TBL_MEMBER_SEQ.NEXTVAL
+		VALUES (TBL_MEMBER_SEQ2.NEXTVAL
 				  , #{id}
 				  , #{pass}
 				  , #{name}
@@ -23,20 +23,33 @@
 				  , #{phone})
 	</insert>
 	
+	<insert id="memberInsertFile" parameterType="memberVO">
+		INSERT INTO TBL_MEMBER2
+					 (NUM, ID, PASS, NAME, AGE, EMAIL, PHONE, FILENAME)
+		VALUES (TBL_MEMBER_SEQ2.NEXTVAL
+				  , #{id}
+				  , #{pass}
+				  , #{name}
+				  , #{age}
+				  , #{email}
+				  , #{phone}
+				  , #{filename})
+	</insert>
+	
 	<delete id="memberDelete" parameterType="Integer">
 		DELETE 
-			FROM TBL_MEMBER 
+			FROM TBL_MEMBER2 
 		 WHERE NUM = #{num}
 	</delete>
 	
 	<select id="memberContent" parameterType="Integer" resultType="memberVO">
 		SELECT * 
-			FROM TBL_MEMBER 
+			FROM TBL_MEMBER2 
 		 WHERE NUM = #{num}
 	</select>
 	
 	<update id="memberUpdate" parameterType="memberVO">
-		UPDATE TBL_MEMBER 
+		UPDATE TBL_MEMBER2 
 			 SET AGE=#{age}
 			 	 , EMAIL=#{email}
 			 	 , PHONE=#{phone} 
@@ -45,14 +58,14 @@
 	
 	<select id="memberLogin" parameterType="memberVO" resultType="String">
 		SELECT NAME
-		  FROM TBL_MEMBER
+		  FROM TBL_MEMBER2
 		 WHERE ID = #{id}
 		   AND PASS = #{pass}
 	</select>
 	
 	<select id="memberDbcheck" parameterType="String" resultType="String">
 		SELECT ID
-			FROM TBL_MEMBER
+			FROM TBL_MEMBER2
 		 WHERE ID = #{id}
 	</select>
 </mapper>

@@ -26,6 +26,11 @@ public class MemberInsertController implements BasicController {
 
 		MemberVO vo = new MemberVO();
 
+		if (request.getParameter("mode").equals("fadd")) {
+			String filename = request.getParameter("filename");
+			vo.setFilename(filename);
+		}
+
 		vo.setId(id);
 		vo.setPass(pass);
 		vo.setName(name);
@@ -34,7 +39,13 @@ public class MemberInsertController implements BasicController {
 		vo.setPhone(phone);
 
 		MemberDAO dao = new MemberDAO();
-		int cnt = dao.memberInsert(vo);
+		int cnt = -1;
+
+		if (request.getParameter("mode").equals("fadd")) {
+			cnt = dao.memberInsertFile(vo); // 파일 이름을 저장해야하는 경우
+		} else {
+			cnt = dao.memberInsert(vo);
+		}
 
 		String nextPage = null;
 

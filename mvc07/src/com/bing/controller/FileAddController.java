@@ -43,7 +43,7 @@ public class FileAddController implements BasicController {
 					// 폼필드이면
 					System.out.println(fileItem.getFieldName() + "=" + fileItem.getString("utf-8"));
 				} else {
-					// 파일이면
+					// 파일이면 (업로드부분)
 					if (fileItem.getSize() > 0) {
 						int idx = fileItem.getName().lastIndexOf("\\"); // \\(Window), /(Linux)
 						if (idx == -1) {

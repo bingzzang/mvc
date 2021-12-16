@@ -48,6 +48,16 @@ public class MemberDAO {
 		return cnt;
 	}
 
+	// 회원가입 파일 업로드
+	public int memberInsertFile(MemberVO vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.insert("memberInsertFile", vo);
+		session.commit();
+		session.close();
+
+		return cnt;
+	}
+
 	// 회원 삭제
 	public int memberDelete(int num) {
 		SqlSession session = sqlSessionFactory.openSession();
