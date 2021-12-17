@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import com.bing.controller.BasicController;
 import com.bing.controller.FileAddController;
+import com.bing.controller.FileDelController;
+import com.bing.controller.FileGetController;
 import com.bing.controller.MemberAjaxDeleteController;
 import com.bing.controller.MemberAjaxListController;
 import com.bing.controller.MemberContentController;
@@ -36,6 +38,8 @@ public class HandlerMapping {
 		mappings.put("/memberAjaxList.do", new MemberAjaxListController());
 		mappings.put("/memberAjaxDelete.do", new MemberAjaxDeleteController());
 		mappings.put("/fileAdd.do", new FileAddController());
+		mappings.put("/fileGet.do", new FileGetController());
+		mappings.put("/fileDel.do", new FileDelController());
 	}
 
 	public BasicController getController(String key) { // key -> /memberList.do

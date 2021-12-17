@@ -105,4 +105,14 @@ public class MemberDAO {
 
 		return idDouble; // YSE(중복), ON(중복아님)
 	}
+
+	// 파일 삭제
+	public int memberDeleteFile(int num) {
+
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberDeletefile", num);
+		session.commit();
+		session.close();
+		return cnt;
+	}
 }

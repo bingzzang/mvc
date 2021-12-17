@@ -149,8 +149,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="">첨부파일:</label>
 						<div class="col-sm-10">
-							<input type="file" class="control-label" id="file" name="file"
-								style="width: 30%">
+							<input type="file" class="control-label" id="file" name="file" style="width: 30%">
 						</div>
 					</div>
 					<input type="hidden" name="filename" id="filename" value="" />

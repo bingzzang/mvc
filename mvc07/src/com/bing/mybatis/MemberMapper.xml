@@ -68,4 +68,8 @@
 			FROM TBL_MEMBER2
 		 WHERE ID = #{id}
 	</select>
+	
+	<update id="memberDeletefile"	parameterType="Integer">
+		update tbl_member2 set filename='' where num = #{num}
+	</update>
 </mapper>
