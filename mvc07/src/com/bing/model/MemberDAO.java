@@ -85,6 +85,14 @@ public class MemberDAO {
 		return cnt;
 	}
 
+	public int memberUpdateFile(MemberVO vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberUpdateFile", vo);
+		session.commit();
+		session.close();
+		return cnt;
+	}
+
 	// 회원 로그인
 	public String memberLogin(MemberVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
@@ -115,4 +123,5 @@ public class MemberDAO {
 		session.close();
 		return cnt;
 	}
+
 }

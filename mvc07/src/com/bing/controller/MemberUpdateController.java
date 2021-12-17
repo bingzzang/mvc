@@ -22,6 +22,10 @@ public class MemberUpdateController implements BasicController {
 		String phone = request.getParameter("phone");
 
 		MemberVO vo = new MemberVO();
+		if (request.getParameter("mode").equals("fupdate")) {
+			String filename = request.getParameter("filename");
+			vo.setFilename(filename);
+		}
 		vo.setNum(num);
 		vo.setAge(age);
 		vo.setEmail(email);
@@ -29,12 +33,17 @@ public class MemberUpdateController implements BasicController {
 
 		MemberDAO dao = new MemberDAO();
 
-		int cnt = dao.updateMember(vo);
+		int cnt = -1;
+		if (request.getParameter("mode").equals("fupdate")) {
+			cnt = dao.memberUpdateFile(vo);
+		} else {
+			cnt = dao.updateMember(vo);
+		}
 
 		String nextPage = null;
 
 		if (cnt > 0) {
-			nextPage = "redirect:/" + ctx + "/memberList.do";
+			nextPage = "redirect:" + ctx + "/memberList.do";
 		} else {
 			throw new ServletException("fail to update");
 		}

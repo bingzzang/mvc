@@ -38,7 +38,7 @@ public class FileDelController implements BasicController {
 		MemberDAO dao = new MemberDAO();
 		dao.memberDeleteFile(num);
 
-		return "redirect:" + ctx + "/memberContent.do";
+		return "redirect:" + ctx + "/memberContent.do?num=" + num;
 	}
 
 }

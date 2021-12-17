@@ -50,9 +50,18 @@
 	
 	<update id="memberUpdate" parameterType="memberVO">
 		UPDATE TBL_MEMBER2 
-			 SET AGE=#{age}
-			 	 , EMAIL=#{email}
-			 	 , PHONE=#{phone} 
+			 SET AGE = #{age}
+			 	 , EMAIL = #{email}
+			 	 , PHONE = #{phone} 
+		 WHERE NUM = #{num}
+	</update>
+	
+	<update id="memberUpdateFile" parameterType="memberVO">
+		UPDATE TBL_MEMBER2 
+			 SET AGE = #{age}
+			 	 , EMAIL = #{email}
+			 	 , PHONE = #{phone} 
+			 	 , FILENAME = #{filename}
 		 WHERE NUM = #{num}
 	</update>
 	
@@ -70,6 +79,8 @@
 	</select>
 	
 	<update id="memberDeletefile"	parameterType="Integer">
-		update tbl_member2 set filename='' where num = #{num}
+		UPDATE TBL_MEMBER2 
+			 SET FILENAME='' 
+		 WHERE NUM = #{num}
 	</update>
 </mapper>
