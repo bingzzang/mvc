@@ -1,29 +1,17 @@
 package com.narp.model;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class MemberDAO {
 
-	private static SqlSessionFactory sqlSessionFactory;
-
-	// 초기화 블럭 - 프로그램 실행시 딱 한번만 실행되는 코드영역
-	static {
-		try {
-			String resource = "com/bing/mybatis/config.xml";
-			InputStream inputStream;
-			inputStream = Resources.getResourceAsStream(resource);
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	@Autowired
+	private SqlSessionFactory sqlSessionFactory;
 
 	// 회원 전체 리스트 보기
 	public List<MemberVO> memberList() {

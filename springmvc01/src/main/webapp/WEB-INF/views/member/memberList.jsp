@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.bing.model.*" %>    
+<%@ page import="com.narp.model.*" %>    
 <%@ page import="java.util.*" %>
 <%
      // ArrayList<MemberVO> list=(ArrayList<MemberVO>)request.getAttribute("list");
@@ -23,7 +23,6 @@
 </script>
 </head>
 <body>
-[mvc04 예제 - FrontController+POJO]
 <table class="table table-bordered">
   <tr>
     <td>번호</td>

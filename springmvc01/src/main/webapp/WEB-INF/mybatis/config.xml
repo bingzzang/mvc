@@ -5,7 +5,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias type="com.bing.model.MemberVO" alias="memberVO" />
+		<typeAlias type="com.narp.model.MemberVO" alias="memberVO" />
 	</typeAliases>
 
 </configuration>
