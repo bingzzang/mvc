@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.narp.mapper.MemberMapper;
 import com.narp.model.MemberVO;
@@ -68,5 +69,14 @@ public class MemberController {
 		int cnt = memberMapper.memberUpdate(vo);
 
 		return "redirect:/memberList.do";
+	}
+
+	@RequestMapping("/memberAjaxList.do")
+	public @ResponseBody List<MemberVO> memberAjaxList(MemberVO vo) {
+
+		List<MemberVO> list = memberMapper.memberList();
+		// $.ajax() -> callback 함수로 응답 -> json
+
+		return list; // object -> json : @ResponseBody -> API (jackson-databind)
 	}
 }
