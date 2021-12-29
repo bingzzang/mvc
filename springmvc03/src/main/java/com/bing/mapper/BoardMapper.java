@@ -21,4 +21,5 @@ public interface BoardMapper {
 
 	public int update(BoardVO board); // 게시물 수정
 
+	public int readcount(int bno);
 }
