@@ -1,7 +1,7 @@
 package com.bing.controller.sample;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,11 +26,16 @@ public class SampleController {
 		return "ex01";
 	}
 
-	@RequestMapping("/ex02")
-	public String ex02(@ModelAttribute("page") int page) {
+//	@RequestMapping("/ex02")
+//	public String ex02(@ModelAttribute("page") int page) {
+//
+//		log.info("page: " + page);
+//
+//		return "ex02";
+//	}
 
-		log.info("page: " + page);
-
-		return "ex02";
+	@GetMapping("/ex02")
+	public void ex02() {
+		log.info("/ex02");
 	}
 }
