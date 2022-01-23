@@ -30,6 +30,14 @@ public class BoardController {
 		model.addAttribute("list", service.getList());
 	}
 
+	@GetMapping("/register")
+	public String register(Model model) {
+
+		log.info("register");
+
+		return "/board/register";
+	}
+
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
 		log.info("register : " + board);
@@ -38,7 +46,7 @@ public class BoardController {
 
 		rttr.addFlashAttribute("result", board.getBno());
 
-		return "redirect:/board/list";
+		return "redirect:/board/register";
 	}
 
 	@GetMapping("/get")
