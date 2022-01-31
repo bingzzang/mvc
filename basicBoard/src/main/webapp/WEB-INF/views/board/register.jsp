@@ -24,7 +24,7 @@
 							<label>Text area</label><textarea class="form-control" rows="3" name="content"></textarea>
 						</div>
 						<div class="form-group">
-							<label>writer</label><input class="form-control" name="wroter">
+							<label>writer</label><input class="form-control" name="writer">
 						</div>
 						<button type="submit" class="btn btn-default">Submit</button>
 						<button type="reset" class="btn btn-default">Reset</button>
