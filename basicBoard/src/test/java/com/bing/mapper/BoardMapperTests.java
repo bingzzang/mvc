@@ -1,5 +1,7 @@
 package com.bing.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bing.domain.BoardVO;
+import com.bing.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
@@ -20,11 +23,11 @@ public class BoardMapperTests {
 
 	@Setter(onMethod_ = { @Autowired })
 	private BoardMapper mapper;
-
-	@Test
-	public void testGetList() {
-		mapper.getList().forEach(board -> log.info(board));
-	}
+//
+//	@Test
+//	public void testGetList() {
+//		mapper.getList().forEach(board -> log.info(board));
+//	}
 
 //	@Test
 //	public void testInsert() {
@@ -63,15 +66,22 @@ public class BoardMapperTests {
 //		log.info("### Delete Count : " + mapper.delete(2L) + " ###");
 //	}
 
-	@Test
-	public void testUpdate() {
-		BoardVO board = new BoardVO();
-		board.setBno(4L);
-		board.setTitle("수정된 제목");
-		board.setContent("수정된 글내용");
-		board.setWriter("user00");
+//	@Test
+//	public void testUpdate() {
+//		BoardVO board = new BoardVO();
+//		board.setBno(4L);
+//		board.setTitle("수정된 제목");
+//		board.setContent("수정된 글내용");
+//		board.setWriter("user00");
+//
+//		int count = mapper.update(board);
+//		log.info("update count : " + count);
+//	}
 
-		int count = mapper.update(board);
-		log.info("update count : " + count);
+	@Test
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		list.forEach(board -> log.info(board));
 	}
 }

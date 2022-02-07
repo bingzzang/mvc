@@ -91,7 +91,7 @@
 			e.preventDefault();
 
 			var operation = $(this).data("oper");
-
+debugger;
 			console.log(operation);
 
 			if (operation === 'remove') {

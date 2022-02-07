@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bing.domain.BoardVO;
+import com.bing.domain.Criteria;
 import com.bing.mapper.BoardMapper;
 import com.bing.service.BoardService;
 
@@ -46,10 +47,16 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.delete(bno) == 1;
 	}
 
+//	@Override
+//	public List<BoardVO> getList() {
+//		log.info("getList....");
+//		return mapper.getList();
+//	}
+
 	@Override
-	public List<BoardVO> getList() {
-		log.info("getList....");
-		return mapper.getList();
+	public List<BoardVO> getList(Criteria cri) {
+		log.info("getList...." + cri);
+		return mapper.getListWithPaging(cri);
 	}
 
 }

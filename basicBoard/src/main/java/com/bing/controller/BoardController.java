@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bing.domain.BoardVO;
+import com.bing.domain.Criteria;
 import com.bing.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -22,12 +23,19 @@ public class BoardController {
 
 	private BoardService service;
 
+//	@GetMapping("/list")
+//	public void list(Model model) {
+//
+//		log.info("list");
+//
+//		model.addAttribute("list", service.getList());
+//	}
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Criteria cri, Model model) {
 
 		log.info("list");
 
-		model.addAttribute("list", service.getList());
+		model.addAttribute("list", service.getList(cri));
 	}
 
 	@GetMapping("/register")
