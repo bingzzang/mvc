@@ -67,10 +67,10 @@
 					</ul>
 				</div>
 				<!-- /Paging -->
-				<form id='actionForm' action="/board/list" method="get">
-					<input type='hidden' name='bno' value='<c:out value="${board.bno }"/>'>
-					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+				<form id="actionForm" action="/board/list" method="get">
+					<input type="hidden" name="bno" value="<c:out value="${board.bno }"/>">
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 				</form>
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -110,7 +110,7 @@
 		
 		checkModal(result);
 		
-		history.replacestate({}, null, null);
+		history.replaceState({}, null, null);
 		
 		function checkModal(result){
 			if (result === ''){
@@ -130,9 +130,10 @@
 		
 		var actionForm = $("#actionForm");
 
+		console.log($(".paginate_button a"));
 		$(".paginate_button a").on("click",
 				function(e) {
-
+					
 					e.preventDefault();
 
 					console.log('click');
