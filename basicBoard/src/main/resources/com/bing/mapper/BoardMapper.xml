@@ -17,7 +17,7 @@
 								SELECT /*+ index_desc(tbl_board pk_board) */ 
 											rownum rn, bno, title, content
 									FROM TBL_BOARD 
-								 WHERE rownum <= #{pageNum} * #{amount}
+								 WHERE rownum <= #{pageNum} * #{amount})
 				 WHERE rn> (#{pageNum} - 1) * #{amount}
 		]]>
 	</select>
