@@ -68,7 +68,6 @@
 				</div>
 				<!-- /Paging -->
 				<form id="actionForm" action="/board/list" method="get">
-					<input type="hidden" name="bno" value="<c:out value="${board.bno }"/>">
 					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 				</form>
@@ -147,10 +146,8 @@
 
 					e.preventDefault();
 					actionForm.append("<input type='hidden' name='bno' value='"
-									+ $(this).attr("href")
-									+ "'>");
-					actionForm.attr("action",
-							"/board/get");
+									+ $(this).attr("href") + "'>");
+					actionForm.attr("action", "/board/get");
 					actionForm.submit();
 
 			});
