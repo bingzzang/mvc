@@ -74,4 +74,55 @@ public class TestReturnController {
 		return re;
 	}
 
+	@GetMapping("/test/return/reList")
+	@ResponseBody
+	public ResponseEntity<List<String>> listStrRe() {
+		ResponseEntity<List<String>> list = null;
+
+		List<String> strList = new ArrayList<String>();
+		strList.add("네이버");
+		strList.add("카카오");
+		strList.add("라인");
+		strList.add("쿠팡");
+		strList.add("배달의민족");
+
+		list = new ResponseEntity<List<String>>(strList, HttpStatus.OK);
+
+		return list;
+	}
+
+	@GetMapping("/test/return/reListMap")
+	@ResponseBody
+	public ResponseEntity<List<Map<String, Object>>> listMapRE() {
+
+		ResponseEntity<List<Map<String, Object>>> resultEntity = null;
+
+		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+		Map<String, Object> inMap = new HashMap<String, Object>();
+
+		inMap.put("삼성", "전자");
+		inMap.put("삼성", "건설");
+		inMap.put("삼성", "금융");
+		inMap.put("삼성", "조선");
+
+		resultList.add(inMap);
+
+		inMap = new HashMap<String, Object>();
+		inMap.put("네이버", "포털");
+		inMap.put("네이버", "라인");
+		inMap.put("네이버", "이커머스");
+
+		resultList.add(inMap);
+
+		inMap = new HashMap<String, Object>();
+		inMap.put("카카오", "메신저");
+		inMap.put("카카오", "은행");
+		inMap.put("카카오", "O2O");
+
+		resultList.add(inMap);
+
+		resultEntity = new ResponseEntity<List<Map<String, Object>>>(resultList, HttpStatus.OK);
+
+		return resultEntity;
+	}
 }
