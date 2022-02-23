@@ -1,4 +1,4 @@
-package com.web.exercise;
+package com.web.exercise.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;

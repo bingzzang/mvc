@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- 게시판 -->
+<mapper namespace="com.jth.exercise.board.mapper">
+
+	<!-- 게시판 저장 -->
+	<insert id="insertBoard">
+		INSERT INTO board
+		(
+			id
+			, title
+			, contents
+		)
+		VALUES
+		(
+			#{id}
+			, #{title}
+			, #{contents}
+		)	
+	</insert>
+	
+	<!-- 게시판 조회 -->
+	<select id="selectBoardList"
+			resultType="com.jth.exercise.board.vo.BoardVO">
+		SELECT	id				/* id */
+				, title			/* 제목 */
+				, contents		/* 내용 */
+		FROM	board
+		ORDER BY id desc
+	</select>
+	
+	<!-- 게시판 상세 -->
+	<select id="selectBoardDetail"
+			parameterType="com.jth.exercise.board.vo.BoardVO"
+			resultType="com.jth.exercise.board.vo.BoardVO">
+		SELECT	id				/* id */
+				, title			/* 제목 */
+				, contents		/* 내용 */
+		FROM	board
+		WHERE	id = #{id}
+	</select>
+	
+	<!-- 게시판 수정 -->
+	<update id="updateBoard"
+			parameterType="com.jth.exercise.board.vo.BoardVO">
+		UPDATE  board
+		SET		title 		= #{title}
+				, contents 	= #{contents}
+		WHERE	id 	= #{id}
+	</update>
+	
+	<!-- 게시판 삭제 -->
+	<delete id="deleteBoard"
+			parameterType="com.jth.exercise.board.vo.BoardVO">
+		DELETE FROM board
+		WHERE id = #{id}
+	</delete>
+
+</mapper>
