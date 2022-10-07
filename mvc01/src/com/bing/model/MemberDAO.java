@@ -20,14 +20,15 @@ public class MemberDAO {
 	// 데이터베이스 연결객체 생성
 	public void getConnect() {
 		// 데이터베이서 접속 url, user, password
-		String url = "jdbc:oracle:thin:@127.0.0.1:1521:java";
-		String user = "bing";
-		String password = "bing930303";
+		String url = "jdbc:mysql://localhost:3306/springmvc?characterEncoding=UTF-8&serverTimeZone=UTC";
+		String user = "spring01";
+		String password = "spring01";
 
-		// Oracle Driver Loading
+		// Driver Loading
 		try {
 			// 동적로딩(실행지점에서 객체를 생성하는 방법)
-			Class.forName("oracle.jdbc.OracleDriver"); // 동적로딩, 실행시점에 메모리에 올림
+//			Class.forName("oracle.jdbc.OracleDriver"); 
+			Class.forName("com.mysql.jdbc.Driver"); // 동적로딩, 실행시점에 메모리에 올림
 			conn = DriverManager.getConnection(url, user, password); // 실패하면 예외발생
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -36,7 +37,7 @@ public class MemberDAO {
 
 	// 회원저장 동작
 	public int memberInsert(MemberVO vo) {
-		String sql = "insert into tbl_member(num, id, pass, name, age, email, phone) "
+		String sql = "insert into member(num, id, pass, name, age, email, phone) "
 				+ "values(TBL_MEMBER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
 
 		getConnect();
@@ -68,7 +69,7 @@ public class MemberDAO {
 
 	// 회원 전체 리스트 가져오기
 	public List<MemberVO> getMemberList() {
-		String sql = "select * from tbl_member order by num";
+		String sql = "select * from member order by num";
 		getConnect();
 
 		List<MemberVO> list = new ArrayList<MemberVO>();
@@ -97,7 +98,7 @@ public class MemberDAO {
 	}
 
 	public int memberDelete(int num) {
-		String sql = "delete from tbl_member where num=?";
+		String sql = "delete from member where num=?";
 		getConnect();
 		int cnt = -1;
 
@@ -116,7 +117,7 @@ public class MemberDAO {
 	}
 
 	public MemberVO getMemberContent(int num) {
-		String sql = "select * from tbl_member where num=?";
+		String sql = "select * from member where num=?";
 
 		getConnect();
 		MemberVO vo = null;
@@ -149,7 +150,7 @@ public class MemberDAO {
 
 	public int updateMember(MemberVO vo) {
 
-		String sql = "update tbl_member set age=?, email=?, phone=? where num=?";
+		String sql = "update member set age=?, email=?, phone=? where num=?";
 		getConnect();
 
 		int cnt = -1;
